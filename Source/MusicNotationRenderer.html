@@ -1,0 +1,73 @@
+<html>
+<body>
+ 
+<div id="divSession">
+ 
+	<h3>Musical Notation Renderer</h3>
+
+	<p>Enter a musical composition in JSON format and click the View button to convert it to an image of music notation.</p>
+ 
+	<label>Song as JSON:</label>
+	<button onclick="buttonSongDemo_Clicked();">Demo</button>
+	<br />
+	<textarea id="textareaSongAsJSON" cols="80" rows="20"></textarea>
+	<br />
+ 
+	<button onclick="buttonSongRender_Clicked();">Render</button>
+	<br />
+ 
+	<label>View:</label><br />
+	<div id="divView"></div><br />
+ 
+</div>
+
+<script type="text/javascript" src="Coords.js"></script>
+<script type="text/javascript" src="Cursor.js"></script>
+<script type="text/javascript" src="Display.js"></script>
+<script type="text/javascript" src="Font.js"></script>
+<script type="text/javascript" src="Image.js"></script>
+<script type="text/javascript" src="InputHelper.js"></script>
+<script type="text/javascript" src="Page.js"></script>
+<script type="text/javascript" src="Session.js"></script>
+<script type="text/javascript" src="Song.js"></script>
+<script type="text/javascript" src="Staff.js"></script>
+<script type="text/javascript" src="Symbol.js"></script>
+<script type="text/javascript" src="SymbolDefn.js"></script>
+<script type="text/javascript" src="VisualCircle.js"></script>
+<script type="text/javascript" src="VisualEllipse.js"></script>
+<script type="text/javascript" src="VisualGroup.js"></script>
+<script type="text/javascript" src="VisualImage.js"></script>
+<script type="text/javascript" src="VisualLine.js"></script>
+<script type="text/javascript" src="VisualOffset.js"></script>
+<script type="text/javascript" src="VisualPath.js"></script>
+<script type="text/javascript" src="VisualText.js"></script>
+
+ 
+<script type="text/javascript">
+ 
+// ui events
+ 
+function buttonSongDemo_Clicked()
+{
+	var song = Song.demo();
+	var songAsJSON = song.toStringJSON();
+	var textareaSongAsJSON = document.getElementById("textareaSongAsJSON");
+	textareaSongAsJSON.value = songAsJSON;
+}
+ 
+function buttonSongRender_Clicked()
+{
+	var d = document;
+	var textareaSongAsJSON = d.getElementById("textareaSongAsJSON");
+	var songAsJSON = textareaSongAsJSON.value;
+	var song = Song.fromStringJSON(songAsJSON);
+	var songAsImgElement = song.toImgElement();
+	var divView = d.getElementById("divView");
+	divView.innerHTML = "";
+	divView.appendChild(songAsImgElement);
+}
+  
+</script>
+ 
+</body>
+</html>
