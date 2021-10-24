@@ -1,5 +1,5 @@
 <html>
-<body>
+<body onload="page_Loaded();">
  
 <div id="divSession">
  
@@ -24,6 +24,7 @@
 <script type="text/javascript" src="Coords.js"></script>
 <script type="text/javascript" src="Cursor.js"></script>
 <script type="text/javascript" src="Display.js"></script>
+<script type="text/javascript" src="Drawable.js"></script>
 <script type="text/javascript" src="Font.js"></script>
 <script type="text/javascript" src="Image.js"></script>
 <script type="text/javascript" src="InputHelper.js"></script>
@@ -31,16 +32,19 @@
 <script type="text/javascript" src="Session.js"></script>
 <script type="text/javascript" src="Song.js"></script>
 <script type="text/javascript" src="Staff.js"></script>
+<script type="text/javascript" src="StaffGroup.js"></script>
 <script type="text/javascript" src="Symbol.js"></script>
 <script type="text/javascript" src="SymbolDefn.js"></script>
-<script type="text/javascript" src="VisualCircle.js"></script>
-<script type="text/javascript" src="VisualEllipse.js"></script>
-<script type="text/javascript" src="VisualGroup.js"></script>
-<script type="text/javascript" src="VisualImage.js"></script>
-<script type="text/javascript" src="VisualLine.js"></script>
-<script type="text/javascript" src="VisualOffset.js"></script>
-<script type="text/javascript" src="VisualPath.js"></script>
-<script type="text/javascript" src="VisualText.js"></script>
+
+<script type="text/javascript" src="Visuals/Visual.js"></script>
+<script type="text/javascript" src="Visuals/VisualCircle.js"></script>
+<script type="text/javascript" src="Visuals/VisualEllipse.js"></script>
+<script type="text/javascript" src="Visuals/VisualGroup.js"></script>
+<script type="text/javascript" src="Visuals/VisualImage.js"></script>
+<script type="text/javascript" src="Visuals/VisualLine.js"></script>
+<script type="text/javascript" src="Visuals/VisualOffset.js"></script>
+<script type="text/javascript" src="Visuals/VisualPath.js"></script>
+<script type="text/javascript" src="Visuals/VisualText.js"></script>
 
  
 <script type="text/javascript">
@@ -65,6 +69,12 @@ function buttonSongRender_Clicked()
 	var divView = d.getElementById("divView");
 	divView.innerHTML = "";
 	divView.appendChild(songAsImgElement);
+}
+
+function page_Loaded()
+{
+	// Pre-load the symbols so that the images load before they're needed to render with.
+	var symbolDefnInstances = SymbolDefn.Instances();
 }
   
 </script>

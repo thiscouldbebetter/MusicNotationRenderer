@@ -21,41 +21,84 @@ class Song
 				(
 					0, // index
 					pageSize,
+					16, // margin
+					// drawables
 					[
-						new Staff
+						new Drawable
 						(
-							0,
-							[
-								new Symbol("ClefG", new Coords(1, 0)),
-								new Symbol("TimeSignatureFourFour", new Coords(3, 0)),
-								new Symbol("AccidentalSharp", new Coords(4, 0)),
-								new Symbol("MeasureLineDouble", new Coords(5, 0)),
- 
-								new Symbol("NoteWhole", new Coords(6, 6)),
-								new Symbol("MeasureLine", new Coords(7, 0)),
- 
-								new Symbol("NoteHalf", new Coords(8, 2)),
-								new Symbol("NoteQuarter", new Coords(9, 3)),
-								new Symbol("NoteQuarter", new Coords(10, 3)),
-								new Symbol("MeasureLine", new Coords(11, 0)),
- 
-								new Symbol("NoteHalf", new Coords(12, 4)),
-								new Symbol("NoteQuarter", new Coords(14, 3)),
-								new Symbol("Dot", new Coords(14.7, 3)),
-								new Symbol("NoteEighth", new Coords(16, 4)),
-								new Symbol("NoteQuarter", new Coords(17, 3)),
-								new Symbol("Dot", new Coords(17.7, 3)),
-								new Symbol("NoteEighth", new Coords(19, 5)),
- 
-								new Symbol("MeasureLine", new Coords(20, 0)),
- 
-								new Symbol("NoteWhole", new Coords(22, 6)),
- 
-								new Symbol("MeasureLineDouble", new Coords(24.3, 0)),
-							]
-						)
-					]
-				),
+							new VisualText("Endearing Young Charms", "Title"),
+							new Coords(pageSize.x / 2, Font.Instances().Title.heightInPixels)
+						),
+
+						new Drawable
+						(
+							new VisualText("Alto Xylophone"),
+							new Coords(50, 50)
+						),
+
+						new Drawable
+						(
+							new VisualText("Traditional"),
+							new Coords(380, 40)
+						),
+
+						new Drawable
+						(
+							new VisualText("Words by Thomas Moore"),
+							new Coords(350, 50)
+						),
+
+						new Drawable
+						(
+							new VisualText("With feeling."),
+							new Coords(40, 80)
+						),
+
+					],
+					new StaffGroup
+					(
+						new Coords(0, 80), // pos
+						64, // spaceBetweenStaves
+						[
+							new Staff
+							(
+								0,
+								[
+									new Symbol("ClefG", new Coords(1, 0)),
+									new Symbol("TimeSignatureSixEight", new Coords(3, 0)),
+
+									new Symbol("AccidentalSharp", new Coords(4, 0)),
+									new Symbol("AccidentalSharp", new Coords(4.5, 3)),
+									new Symbol("AccidentalSharp", new Coords(5, -1)),
+									new Symbol("AccidentalSharp", new Coords(5.5, 2)),
+
+									new Symbol("MeasureLineDouble", new Coords(6, 0)),
+	 	 
+									new Symbol("NoteSixteenth", new Coords(7, 6)),
+									new Symbol("NoteSixteenth", new Coords(8, 7)),
+
+									new Symbol("MeasureLine", new Coords(9, 0)),
+
+									new Symbol("NoteEighth", new Coords(10, 8)),
+									new Symbol("Dot", new Coords(10.75, 8)),
+									new Symbol("NoteSixteenth", new Coords(12, 7)),
+									new Symbol("NoteEighth", new Coords(13, 8)),
+									new Symbol("NoteEighth", new Coords(14, 8)),
+									new Symbol("NoteEighth", new Coords(15, 6)),
+									new Symbol("NoteEighth", new Coords(16, 4)),
+
+									new Symbol("MeasureLine", new Coords(17, 0)),
+
+									new Symbol("NoteEighth", new Coords(18, 5)),
+									new Symbol("NoteEighth", new Coords(19, 3)),
+									new Symbol("NoteEighth", new Coords(20, 1)),									
+								]
+							)
+						]
+
+					) // end new StaffGroup
+
+				) // end new Page
 			]
 		);
  

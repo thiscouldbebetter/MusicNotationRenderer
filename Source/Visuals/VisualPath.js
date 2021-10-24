@@ -1,8 +1,10 @@
 
-class VisualPath
+class VisualPath extends Visual
 {
 	constructor(vertices)
 	{
+		super();
+
 		this.vertices = vertices;
 	 
 		this._verticesTransformed = [];
@@ -22,5 +24,10 @@ class VisualPath
 			this._verticesTransformed,
 			display.colorFore
 		);
+	}
+
+	fromStringJSON_ObjectPrototypesSet()
+	{
+		throw new Error("todo");
 	}
 }

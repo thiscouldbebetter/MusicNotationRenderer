@@ -1,8 +1,9 @@
 
-class VisualGroup
+class VisualGroup extends Visual
 {
 	constructor(children)
 	{
+		super();
 		this.children = children;
 	}
 
@@ -14,4 +15,10 @@ class VisualGroup
 			child.draw(display, drawPos);
 		}
 	}
+
+	fromStringJSON_ObjectPrototypesSet()
+	{
+		this.children.forEach(x => Visual.fromStringJSON_ObjectPrototypesSet(x));
+	}
+
 }

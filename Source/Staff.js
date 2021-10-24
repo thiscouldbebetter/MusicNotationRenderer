@@ -7,17 +7,20 @@ class Staff
 		this.symbols = symbols;
 	}
 
-	pos(session, song, page)
+	pos(session, song, page, staffGroup)
 	{
 		if (this._pos == null)
 		{
-			var pageMargin = page.margin();
-			var spaceBetweenStaves = page.spaceBetweenStaves();
+			var pageMargin = page.margin;
+			var spaceBetweenStaves = staffGroup.spaceBetweenStaves;
  
 			this._pos = new Coords
 			(
 				pageMargin,
 				pageMargin + this.index * spaceBetweenStaves
+			).add
+			(
+				staffGroup.pos
 			);
 		}
  
@@ -53,14 +56,14 @@ class Staff
  
 	// drawing
  
-	draw(display, session, song, page)
+	draw(display, session, song, page, staffGroup)
 	{
 		var numberOfLines = this.numberOfLines();
 		var spaceBetweenLines = this.spaceBetweenLines();
  
-		var fromPos = this.pos(session, song, page).clone();
+		var fromPos = this.pos(session, song, page, staffGroup).clone();
 		var toPos = fromPos.clone();
-		toPos.x += page.size.x - page.margin() * 2;
+		toPos.x += page.size.x - page.margin * 2;
 		for (var i = 0; i < numberOfLines; i++)
 		{
 			display.drawLine(fromPos, toPos, display.colorFore);

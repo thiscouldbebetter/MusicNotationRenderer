@@ -69,6 +69,11 @@ class Display
 			this.graphics.stroke();
 		}
 	}
+
+	drawImage(imageToDraw, pos)
+	{
+		this.graphics.drawImage(imageToDraw.systemImage, pos.x, pos.y);
+	}
  
 	drawLine(fromPos, toPos, color)
 	{

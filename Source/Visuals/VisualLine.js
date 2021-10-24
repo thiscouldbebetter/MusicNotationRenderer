@@ -1,8 +1,9 @@
 
-class VisualLine
+class VisualLine extends Visual
 {
 	constructor(fromPos, toPos)
 	{
+		super();
 		this.fromPos = fromPos;
 		this.toPos = toPos;
 	}
@@ -15,6 +16,12 @@ class VisualLine
 			this.toPos.clone().add(drawPos),
 			display.colorFore
 		);
+	}
+
+	fromStringJSON_ObjectPrototypesSet()
+	{
+		this.fromPos.__proto__ = Coords.prototype;
+		this.toPos.__proto__ = Coords.prototype;
 	}
 }
  

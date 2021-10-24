@@ -26,8 +26,9 @@ class SymbolDefn_Instances
 		var staffLineSpacing = Staff.spaceBetweenLines();
 		var noteSpacing = new Coords(1.5, 1).multiplyScalar(staffLineSpacing / 2);
 		var noteSize = noteSpacing.clone().multiplyScalar(.8);
-		var fontClef = new Font("sans-serif", staffLineSpacing * 4);
-		var fontTimeSignature = new Font("sans-serif", staffLineSpacing * 2);
+
+		var fontClef = Font.Instances().Title.name;
+		var fontTimeSignature = Font.Instances().TimeSignature.name;
  
 		this.AccidentalFlat = new SymbolDefn
 		(
@@ -80,6 +81,7 @@ class SymbolDefn_Instances
 		(
 			"ClefG",
 			"G",
+			/*
 			new VisualGroup
 			([
 				new VisualOffset
@@ -99,6 +101,8 @@ class SymbolDefn_Instances
 					new VisualText(".", fontClef)
 				),
 			])
+			*/
+			new VisualImage(new Image("../Content/GClef.svg"))
 		);
  
 		this.Dot = new SymbolDefn
@@ -251,6 +255,25 @@ class SymbolDefn_Instances
 					(
 						new Coords(0, 2).multiplyScalar(staffLineSpacing),
 						new VisualText("4", fontTimeSignature)
+					),
+				])
+			)
+		);
+
+		this.TimeSignatureSixEight = new SymbolDefn
+		(
+			"TimeSignatureSixEight",
+			"6_8",
+			new VisualOffset
+			(
+				new Coords(0, .8).multiplyScalar(staffLineSpacing),
+				new VisualGroup
+				([
+					new VisualText("6", fontTimeSignature),
+					new VisualOffset
+					(
+						new Coords(0, 2).multiplyScalar(staffLineSpacing),
+						new VisualText("8", fontTimeSignature)
 					),
 				])
 			)

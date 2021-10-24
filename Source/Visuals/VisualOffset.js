@@ -1,8 +1,9 @@
 
-class VisualOffset
+class VisualOffset extends Visual
 {
 	constructor(offset, child)
 	{
+		super();
 		this.offset = offset;
 		this.child = child;
 	 
@@ -15,5 +16,11 @@ class VisualOffset
 		drawPos.add(this.offset);
 		this.child.draw(display, drawPos);
 		drawPos.overwriteWith(this._drawPosSaved);
+	}
+
+	fromStringJSON_ObjectPrototypesSet()
+	{
+		this.offset.__proto__ = Coords.prototype;
+		Visual.fromStringJSON_ObjectPrototypesSet(this.child);
 	}
 }

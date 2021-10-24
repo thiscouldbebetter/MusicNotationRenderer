@@ -1,40 +1,26 @@
 
 class Page
 {
-	constructor(index, size, staves)
+	constructor(index, size, margin, drawables, staffGroup)
 	{
 		this.index = index;
 		this.size = size;
-		this.staves = staves;
-	 
-		this.staffIndexSelected = 0;
+		this.margin = margin;
+		this.drawables = drawables;
+		this.staffGroup = staffGroup;
 	}
-
-	margin()
-	{
-		return 16;
-	}
- 
-	staffSelected()
-	{
-		return this.stave[this.staffIndexSelected];
-	}
- 
-	spaceBetweenStaves()
-	{
-		return 64;
-	}
- 
+  
 	// json
  
 	fromStringJSON_ObjectPrototypesSet()
 	{
-		for (var i = 0; i < this.staves.length; i++)
+		this.drawables.forEach(x =>
 		{
-			var staff = this.staves[i];
-			staff.__proto__ = Staff.prototype;
-			staff.fromStringJSON_ObjectPrototypesSet();
-		}
+			x.__proto__ = Drawable.prototype;
+			x.fromStringJSON_ObjectPrototypesSet();
+		});
+		this.staffGroup.__proto__ = StaffGroup.prototype;
+		this.staffGroup.fromStringJSON_ObjectPrototypesSet();
 	}
  
 	// drawing
@@ -48,11 +34,12 @@ class Page
 			null, // colorFill
 			display.colorFore
 		)
- 
-		for (var i = 0; i < this.staves.length; i++)
+
+		this.drawables.forEach(drawable =>
 		{
-			var staff = this.staves[i];
-			staff.draw(display, session, song, this);
-		}
+			drawable.draw(display);
+		});
+ 
+		this.staffGroup.draw(display, session, song, this);
 	}
 }
